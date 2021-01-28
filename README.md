@@ -1,34 +1,34 @@
 # cre
 
-Cython based high performance alternative to Python (re) module for doing pattern search on large data-set.
+Cython based high performance alternative to Python (re) module for doing pattern matching on large data-set.
 
-Using this module search time can be significantly reduced by splitting search task across multiple application threads. **GIL (Global Interpretor Lock) is released during pattern search, allowing multiple threads to run simultaneously on multiple CPU cores.**
+Using this module execution time can be significantly reduced by splitting search task across multiple threads. **GIL (Global Interpretor Lock) is released during pattern match, allowing multiple threads to run simultaneously on multiple CPU cores.**
 
-Pattern search is implemented in C utilizing GLib PCRE (Perl-compatible regular expressions) support.
+Pattern matching is implemented in C utilizing GLib PCRE (Perl-compatible regular expressions) support.
 
 #### Notes:
-* Application using the module would be responsible for creating threads and splitting search task across them.
-* Unlike Python (re) counterparts, match' and 'search' functions do not raise exception if provided regular-expression is incorrect. Explicit compilation using 'compile' function does raise exception if regular expression is incorrect.
-* Module encodes unicode strings using 'utf-8' encoding before processing.
-* Module does not implicitly compile and cache patterns internally. If required application has to explicitly compile pattern  using 'compile' function.
+* Application would be responsible for creating threads and splitting pattern matching task across them.
+* Unlike Python (re) module, 'match' and 'search' methods do not raise exception if provided regular-expression is incorrect. Explicit compilation using 'compile' method does raise exception if regular expression is incorrect.
+* Strings are encoded using 'utf-8' before processing.
+* Patterns are not implicitly compiled and cached internally. If required application has to explicitly compile pattern using 'compile' method.
 * Searched patterns must comply with PCRE (Perl-compatible regular expressions) standard.
 
 ### Usage
 
 API is similar to Python (re) module
 
-    import cre
+    import cre as re
 
     # search pattern
-    cre.match('pattern', 'String containing pattern')
+    re.match('pattern', 'String containing pattern')
 
     # search using compiled pattern
-    p = cre.compile('pattern')
-    p.search(''String containing pattern'')
+    p = re.compile('pattern')
+    p.search('String containing pattern')
     
 ### Compatibility
 
-* Module should work with Python 2.7.x and 3.3+.
+* cre should work with Python 2.7.x and 3.3+.
 * Compilation has been tested with Cython 0.29.13.
 
 ### Installation
