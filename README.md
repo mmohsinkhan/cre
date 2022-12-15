@@ -1,6 +1,6 @@
 # cre
 
-Cython based high performance alternative to Python (re) module for doing pattern matching on large data-set.
+Cython based high performance alternative to Python (re) module for doing basic pattern matching on large data-set.
 
 Using this module execution time can be significantly reduced by splitting search task across multiple threads. **GIL (Global Interpretor Lock) is released during pattern match, allowing multiple threads to run simultaneously on multiple CPU cores.**
 
